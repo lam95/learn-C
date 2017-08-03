@@ -6,6 +6,14 @@ void imt(double a[20][20],int n);
 
 void phandu(double a[20][20],double b[20][20],int *n,int i,int j);
 
+void cofactor(double a[20][20],double b[20][20],int n);
+
+double det(double a[20][20],int n);
+
+void chuyenvi(double a[20][20],double b[20][20],int n);
+
+void nghichdao(double a[20][20],double b[20][20],int n);
+
 main ()
 {
 	double d,a[20][20],b[20][20];
@@ -59,4 +67,49 @@ void phandu(double a[20][20],double b[20][20],int *n,int i,int j)
 			else b[k][w]=a[p][w+1];
 		}
 	}
+}
+void cofactor(double a[20][20],double b[20][20],int m)
+{
+	int  k,i,j;
+	k=m;
+	double x,c[20][20];
+	for (i=0;i<m;i++)
+	for (j=0;j<m;j++)
+	{
+		phandu(a,c,&m,i,j);
+		x=det(c,m);
+		b[i][j]=pow(-1,i+j)*x;
+		m=k;
+	}
+}
+double det(double a[20][20],int n)
+{
+	double b[20][20],x=0;
+	int j;
+	if(n==1) x=a[0][0];
+	else
+	{
+		cofactor(a,b,n);
+		for(j=0;j<n;j++)
+			x=x+a[1][j]*b[1][j];
+	}
+	return x;
+}
+void chuyenvi(double a[20][20],double b[20][20],int n)
+{
+	int i,j;
+	for (i=0;i<n;i++)
+	for (j=0;j<n;j++)
+	b[i][j]=a[j][i];
+}
+void nghichdao(double a[20][20],double b[20][20],int n)
+{
+	int i,j;
+	double d,c[20][20];
+	cofactor(a,b,n);
+	chuyenvi(b,c,n);
+	d=det(a,n);
+	for(i=0;i<n;i++)
+	for(j=0;j<n;j++)
+		b[i][j]=(c[i][j])/d;
 }
