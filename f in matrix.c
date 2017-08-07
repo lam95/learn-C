@@ -42,3 +42,14 @@ void nmt(double a[20][20],int *m,int *n)
 		scanf("%lf",&a[i][j]);
 	}
 }
+void imt(double a[20][20],int m,int n)
+{
+	int i,j;
+	puts("Ma tran");
+	for(i=0;i<m;i++)
+	{
+		for(j=0;j<n;j++)
+		printf("%.3lf\t",a[i][j]);
+		printf("\n");
+	}
+}
