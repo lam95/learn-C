@@ -158,3 +158,30 @@ void pivot(double a[20][20],int r,int n)
 		a[i][j]=a[i][j]/c;
 	}
 }
+void echelon(double a[20][20],int m,int n)
+{
+	int i,j,r=0,kt;
+	for(j=0;j<n;j++)
+	{
+		ktpivot(a,j,m,r,&kt);
+		if(kt==1) 
+		{
+			if(a[r][j]==0)
+			{
+				 i=minr(a,r,n,j);
+				 interchange(a,n,r,i);
+			}
+			 kill(a,j,n,m,r);
+			 r=r+1;
+		}
+		if(r==m-1) break;
+	}
+	for(i=r;i>0;i--)
+		for(j=0;j<n;j++)
+		{
+			if(a[i][j]!=0)
+				killup(a,n,j,i);
+			if(a[i][j]!=0) break;
+		}
+	pivot(a,r,n);
+}
