@@ -52,3 +52,28 @@ main()
 	imt(b,n);
 }
 
+void nmt(double a[20][20],int *n)
+{
+	int i,j;
+	printf("Nhap n:");
+	scanf("%d",n);
+	puts("Nhap ma tran");
+	for(i=0;i<*n;i++)
+		for(j=0;j<*n;j++)
+		{
+			printf("a[%d][%d]=",i,j);
+			scanf("%lf",&a[i][j]);
+		}
+}
+void imt(double a[20][20],int n)
+{
+	int i,j;
+	puts("Ma tran");
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+			printf("%.3lf\t",a[i][j]);
+		printf("\n");
+	}
+}
+
