@@ -51,7 +51,6 @@ main()
 	echelon(b,n);
 	imt(b,n);
 }
-
 void nmt(double a[20][20],int *n)
 {
 	int i,j;
@@ -76,4 +75,17 @@ void imt(double a[20][20],int n)
 		printf("\n");
 	}
 }
-
+void copymatrix(double a[20][20],double b[20][20],int n)
+{
+	int i,j;
+	for (i=0;i<n;i++)
+		for (j=0;j<n;j++)
+			b[i][j]=a[i][j];
+}
+void chuyenvi(double a[20][20],double b[20][20],int n)
+{
+	int i,j;
+	for (i=0;i<n;i++)
+		for (j=0;j<n;j++)
+			b[i][j]=a[j][i];
+}
