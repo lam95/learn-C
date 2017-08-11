@@ -169,7 +169,62 @@ int minr(double a[20][20],int r,int n,int j)
 	}
 	return hang;
 }
-
+void interchange(double a[20][20],int n,int r1,int r2)
+{
+	double x;
+	int j;
+	for(j=0;j<n;j++)
+	{
+		x=a[r1][j];
+		a[r1][j]=a[r2][j];
+		a[r2][j]=x;
+	}
+}
+void kill (double a[20][20],int j,int n,int r1)
+{
+	int i,k;
+	double c;
+	for(i=r1+1;i<n;i++)
+	{
+		c=(double)a[i][j]/a[r1][j];
+		for (k=j;k<n;k++)
+			a[i][k]=a[i][k]-(double)c*a[r1][k];
+	}
+}
+void killup(double a[20][20],int n,int j,int r2)
+{
+	int i,k;
+	double c;
+	for(i=0;i<r2;i++)
+	{
+		c=a[i][j]/a[r2][j];
+		for(k=j;k<n;k++)
+			a[i][k]=a[i][k]-(double)c*a[r2][k];
+	}
+}
+double duongcheo(double a[20][20],int n)
+{
+	int i;
+	double d=1;
+	for(i=0;i<n;i++)
+		d=d*a[i][i];
+	return d;
+}
+void pivot(double a[20][20],int r,int n)
+{
+	int i,j;
+	double c=0;
+	for(i=0;i<=r;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			if(a[i][j]!=0) c=a[i][j];
+			if(a[i][j]!=0) break;
+		}
+		for(j=0;j<n;j++)
+			a[i][j]=a[i][j]/c;
+	}
+}
 void echelon(double a[20][20],int n)
 {
 	int i,j,r=0,kt;
