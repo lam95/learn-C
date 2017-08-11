@@ -131,3 +131,62 @@ double det(double a[20][20],int n)
 	}
 	return x;
 }
+void nghichdao(double a[20][20],double b[20][20],int n)
+{
+	int i,j;
+	double d,c[20][20];
+	cofactor(a,b,n);
+	chuyenvi(b,c,n);
+	d=det(a,n);
+	if(d!=0)
+	{
+		for(i=0;i<n;i++)
+		for(j=0;j<n;j++)
+			b[i][j]=(c[i][j])/d;
+	}
+}
+void ktpivot(double a[20][20],int j,int n,int r1,int *kt)
+{
+	int i;
+	*kt=0;
+	for(i=r1;i<n;i++)
+	{
+		if(a[i][j]!=0) *kt=1;
+		if(*kt==1) break;
+	}
+}
+int minr(double a[20][20],int r,int n,int j)
+{
+	int k,hang;
+	double nn;
+	for(k=r;a[k][j]==0;k++);
+	nn=a[k][j];
+	for(k=r;k<n;k++)
+	{
+		if(a[k][j]!=0)
+		if(fabs(a[k][j])<=nn)
+			hang=k;
+	}
+	return hang;
+}
+void interchange(double a[20][20],int n,int r1,int r2)
+{
+	double x;
+	int j;
+	for(j=0;j<n;j++)
+	{
+		x=a[r1][j];
+		a[r1][j]=a[r2][j];
+		a[r2][j]=x;
+	}
+}
+
+double duongcheo(double a[20][20],int n)
+{
+	int i;
+	double d=1;
+	for(i=0;i<n;i++)
+		d=d*a[i][i];
+	return d;
+}
+
