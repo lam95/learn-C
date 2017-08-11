@@ -169,24 +169,30 @@ int minr(double a[20][20],int r,int n,int j)
 	}
 	return hang;
 }
-void interchange(double a[20][20],int n,int r1,int r2)
+
+void echelon(double a[20][20],int n)
 {
-	double x;
-	int j;
+	int i,j,r=0,kt;
 	for(j=0;j<n;j++)
 	{
-		x=a[r1][j];
-		a[r1][j]=a[r2][j];
-		a[r2][j]=x;
+		ktpivot(a,j,n,r,&kt);
+		if(kt==1) 
+		{
+			if(a[r][j]==0)
+			{
+				 i=minr(a,r,n,j);
+				 interchange(a,n,r,i);
+			}
+			 kill(a,j,n,r);
+			 r=r+1;
+		}
 	}
+	for(i=r;i>0;i--)
+		for(j=0;j<n;j++)
+		{
+			if(a[i][j]!=0)
+				killup(a,n,j,i);
+			if(a[i][j]!=0) break;
+		}
+	pivot(a,r,n);
 }
-
-double duongcheo(double a[20][20],int n)
-{
-	int i;
-	double d=1;
-	for(i=0;i<n;i++)
-		d=d*a[i][i];
-	return d;
-}
-
