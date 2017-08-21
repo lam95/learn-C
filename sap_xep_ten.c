@@ -40,6 +40,32 @@ int ten(char a[30])
 	x=a[i+1];
 	return x;
 }
+void sapxep(sv a[30],int n)
+{
+	int i,j;
+	sv tg;
+	for(i=0;i<n-1;i++)
+		for(j=i+1;j<n;j++)
+			if(ten(a[i].name)>ten(a[j].name))
+			{
+				tg=a[i];
+				a[i]=a[j];
+				a[j]=tg;
+			}
+}
  main ()
  {
+ 	sv a[30];
+ 	int n;
+ 	printf("nhap vao n:\t");
+ 	scanf("%d%*c",&n);
+ 	puts("--- Nhap thong tin sinh vien---");
+ 	nhap(a,n);
+ 	puts("---thong tin sv vua nhap---");
+ 	insv(a,n);
+ 	puts("---sinh vien sap xep theo ten---");
+ 	sapxep(a,n);
+ 	insv(a,n);
+ 	getch;
+ 	//return main();
  }
