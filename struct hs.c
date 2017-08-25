@@ -31,6 +31,22 @@ void nhap(hs a[20],int n)
 	}
 	printf("---------------------\n");
 }
+void timnam(hs a[20],int n)
+{
+	int year,ns,i,d=0;
+	printf ("nhap nam sinh:");
+	scanf("%d",&ns);
+	for(i=0;i<n;i++)
+	{
+		year=a[i].x.nam;
+		if(ns==year)
+		{
+			d=1;
+			puts(a[i].ht);
+		}
+	}
+	if (d==0) printf("khong tim thay thong tin\n");
+}
  main ()
  {
  	int i,n,ns;
