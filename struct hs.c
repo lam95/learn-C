@@ -33,4 +33,12 @@ void nhap(hs a[20],int n)
 }
  main ()
  {
+ 	int i,n,ns;
+ 	hs a[20];
+ 	printf("nhap vao n:");
+ 	scanf("%d%*c",&n);
+ 	nhap(a,n);
+ 	timnam(a,n);
+ 	getch;
+ 	return main();
  }
