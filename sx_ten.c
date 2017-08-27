@@ -32,8 +32,6 @@ int sosanhchuoi(char tensv1[], char tensv2[])
 		ten1[i - (cach2 + 1)] = tensv1[i];
 	}
 	
-	
-	
 	cach1 = 0;
 	while(tensv2[cach1]!=' ') cach1++;
 	
@@ -66,7 +64,6 @@ int sosanhchuoi(char tensv1[], char tensv2[])
 	} 	
 	else 
 	return strcmp(ho1, ho2);	
-	
 }
 	
 struct sinhVien
@@ -116,7 +113,6 @@ int main()
 		printf("Ho va ten sinh vien %d: %s\n", i, sv[i].hoVaten);
 		printf("Que quan sinh vien %d: %s\n", i, sv[i].que);
 		printf("Diem sinh vien %d: %d\n", i, sv[i].diem);
-		
 	}
 }
 
