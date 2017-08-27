@@ -1,38 +1,28 @@
 #include <stdio.h>
 #include <string.h>
 
-int sosanhchuoi(char tensv1[], char tensv2[])
+int main()
 {
-	int  i = 0, cach1, cach2;
-	char ten1[10];
-	char  dem1[10];
-	char ho1[10];
-	char  ten2[10];
-	char dem2[10];
-	char  ho2[10];
-	
-	cach1 = 0;
-	while(tensv1[cach1]!=' ') cach1++;
-	
-	cach2 = strlen(tensv1)-1;
-	while(tensv1[cach2]!=' ') cach2--;
-	
-	for(i=0;i<cach1;i++)
+	struct sinhVien sv[5];
+	int  t, j, i = 0;
+	char t2[100]="anh nho em";
+	for(i=0;i<5;i++)
 	{
-		ho1[i] = tensv1[i];
+		printf("Ho va ten sinh vien %d:\n", i);
+		fflush(stdin);
+	    gets(sv[i].hoVaten);
+	    printf("Que quan sinh vien %d:\n", i);
+	    fflush(stdin);
+	    gets(sv[i].que);
+	    printf("Diem cua sinh vien %d:\n", i);
+	    scanf("%d", &sv[i].diem);
 	}
-	
-	for(i=(cach1+1); i< cach2; i++)
+	for(i=0;i<5;i++)
 	{
-		dem1[i-(cach1+1)] = tensv1[i];
+		printf("Ho va ten sinh vien %d: %s\n", i, sv[i].hoVaten);
+		printf("Que quan sinh vien %d: %s\n", i, sv[i].que);
+		printf("Diem sinh vien %d: %d\n", i, sv[i].diem);
+		
 	}
-	
-	for(i=(cach2+1); i < strlen(tensv1); i++)
-	{
-		ten1[i - (cach2 + 1)] = tensv1[i];
-	}
-	
-	
-	
 }
 
