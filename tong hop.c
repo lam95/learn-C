@@ -4,32 +4,6 @@
 # include <string.h>
 
 
-// Ma tran thuong
-// nhap ma tran thuong
-void nmtt (double a[20][20],int *m,int *n);
-// in ma tranthuong
-void imtt (double a[20][20],int m,int n);
-// copy ma tran thuong
-void copymtt (double a[20][20],double b[20][20],int m,int n);
-// ktra pivot
-void ktpivot (double a[20][20],int j,int m,int r,int *kt);
-// hang phan tu nho nhat
-int minr (double a[20][20],int r,int m,int j);
-// doi vi tri 2 hang
-void interchange (double a[20][20],int n,int r1,int r2);
-// khu phan tu duoi pivot
-void kill (double a[20][20],int j,int n,int m,int r);
-// khu phan tu tren pivot
-void killup (double a[20][20],int n,int j,int r2);
-// xuat hien pivot = 1
-void pivot (double a[20][20],int r,int n);
-// reduce ma tran thuong
-void reduce (double a[20][20],int m,int n);
-// chuyen vi ma tran thuong
-void chuyenvimtt (double a[20][20],double b[20][20],int m,int n);
-// tich 2 ma tran thuong
-void tichmtt (double a[20][20],double b[20][20],double c[20][20],int m,int n,int p);
-
 // Ma tran vuong
 // nhap ma tran vuong
 void nmtv (double a[20][20],int *n);
@@ -57,7 +31,72 @@ void nghichdao (double a[20][20],int n);
 main ()
 {
 	int x,m,n,p,muc=0;
-	
+	double dt,a[20][20],b[20][20],c[20][20];
+menuc: 
+	puts ("- Menu");
+	puts ("1, Ma tran");
+	puts ("2, Xau ky tu");
+	puts ("3, Day, mang");
+	puts ("4, Cau truc");
+	printf ("Nhap vao 1,2,3 hoac 4: ");
+	scanf ("%d",&x);
+	switch (x)
+	{
+		case 1:
+			{
+				muc=11;
+				puts ("- Menu");
+				puts ("1.1, Ma tran thuong");
+				puts ("1.2, Ma tran vuong");
+				printf ("Nhap 1 hoac 2: ");
+				scanf ("%d",&x);
+				switch (x)
+				{
+					case 1:
+						{
+							puts ("Nhap ma tran [A]mxn");
+							nmtt (a,&m,&n);
+motmot:	
+							imtt (a,m,n);
+							puts ("- Menu");
+							puts ("1.1.1, Reduce row echelon form");
+							puts ("1.1.2, Ma tran chuyen vi");
+							puts ("1.1.3, Nhan ma tran");
+							printf ("Nhap 1,2 hoac 3: ");
+			} break;
+		case 2:
+			{
+				puts ("- Menu");
+				puts ("2.1, Thong tin xau ky tu");
+				puts ("2.2, chuan hoa xau");
+				puts ("...dang cho cap nhat");
+			} break;
+		case 3:
+			{
+				puts ("...dang cho cap nhat");
+			} break;
+		case 4:
+			{
+				puts ("...dang cho cap nhat");
+			} break;
+	};
+dieuhuong:
+	puts ("Ban muon thuc hien thao tac khac ko?");
+	printf ("1. Co \t 2.khong \t 3.ve menu chinh \n");
+	printf ("Nhap vao 1,2 hoac 3: ");
+	scanf ("%d",&x);
+	switch (x)
+	{
+		case 1:
+			{
+				if (muc==11) goto motmot;
+				else if (muc==12) goto mothai;
+				else goto menuc;
+			} 
+		case 2: break;
+		case 3: goto menuc;
+	};
+	puts ("---the end---");
 }
 
 
