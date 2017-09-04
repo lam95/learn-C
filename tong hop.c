@@ -312,6 +312,50 @@ void killup(double a[20][20],int n,int j,int r2)
 		a[i][k]=a[i][k]-(c*a[r2][k]);
 	}
 }
+void pivot(double a[20][20],int r,int n)
+{
+	int i,j;
+	double c=0;
+	for(i=0;i<=r;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			if(a[i][j]!=0) c=a[i][j];
+			if(a[i][j]!=0) break;
+		}
+		for(j=0;j<n;j++)
+		a[i][j]=a[i][j]/c;
+	}
+}
+
+void reduce (double a[20][20],int m,int n)
+{
+	int i,j,r=0,kt;
+	for(j=0;j<n;j++)
+	{
+		ktpivot(a,j,m,r,&kt);
+		if(kt==1) 
+		{
+			if(a[r][j]==0)
+			{
+				 i=minr(a,r,n,j);
+				 interchange(a,n,r,i);
+			}
+			 kill(a,j,n,m,r);
+			 r=r+1;
+		}
+		if(r==m-1) break;
+	}
+	for(i=r;i>0;i--)
+	{
+		for(j=0;j<n;j++)
+		{
+			if(a[i][j]!=0)	killup(a,n,j,i);
+			if(a[i][j]!=0) break;
+		}
+	}
+	pivot(a,r,n);
+}
 
 void chuyenvimtt (double a[20][20],double b[20][20],int m,int n)
 {
@@ -399,6 +443,27 @@ void reducemtv (double a[20][20],int n)
 	pivot(a,r,n);
 }
 
+void cvmtv (double a[20][20],double b[20][20],int n)
+{
+	int i,j;
+	for (i=0;i<n;i++)
+		for (j=0;j<n;j++)
+			b[i][j]=a[j][i];
+}
+
+void tichmtv (double a[20][20],double b[20][20],double c[20][20],int n)
+{
+	int i,j,k;
+	for (i=0;i<n;i++)
+	for (j=0;j<n;j++)
+	{
+		c[i][j]=0;
+		for (k=0;k<n;k++)
+		{
+			c[i][j]+=a[i][k]*b[k][j];
+		}
+	}
+}
 
 void phandu(double a[20][20],double b[20][20],int *n,int i,int j)
 {
